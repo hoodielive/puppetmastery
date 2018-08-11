@@ -1,9 +1,10 @@
-# Write a firewalld class 
-# Utilize crayfishx-firewalld from puppet forge
-# expand options
-# utilize hiera
-# setup Vagrantfile and use 5 nodes 
-	1 puppetmaster -> puppetmaster.eno.lab
-	2 puppetagents -> pagent01 and pagent02 
-	1 puppetdb     -> pdb01 
-	l loadbalancer -> lb01
+# This PAM login file is managed by puppet, so don't be a dofus and edit it here because your changes will be
+# 'overwritten'! u dig? 
+
+file { 'login':
+    path    => '/etc/pam.d/login',
+    ensure  => file, 
+    content => template('pam/login'),
+    owner   => 'root',
+    mode    => '0644',
+}

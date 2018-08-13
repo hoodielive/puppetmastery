@@ -1,0 +1,75 @@
+IaaC
+
+Resource -> what do you want? 
+    user = xyz 
+    uid = 5001
+    pass = xxx 
+
+    -> $user (object) -> [provider] -> [dsl (domain specific language)] 
+
+    puppet/chef will do the translation into -> 
+
+    user (resource) provider (who will take care of it i.e. ruby)
+
+
+Declarative Approach  -> leverage and control the 'state' of our infrastructure 
+
+Revision Control 
+
+Recreate the Infrastructure out of code repo (code base) -> simplies migration and modularity (even disaster recovery)
+
+Absolute 'consistency'
+
+Puppet Automation 
+    -> End State (always start with end state in mind) 
+    
+Layers 
+
+    Web Server (NGINX) 
+        - install 'Package'
+        - create configuration 'File' 
+        - start 'Service'
+        - create 'Web Page'
+
+        i.e ** Puppet resource[Package, File, Service, File]
+
+        - Think about the process and configure from the 'end' of the 'state' you wish you implement the change
+
+            Package [ state = installed ] 
+            Config File [ state = created ] 
+            Service [ state = started ] 
+            Web Page [ state = created ] 
+        
+        **further** 
+            Package 
+                state = installed 
+                    version = latest 
+
+            Config File 
+                state = created 
+                ownership/permissions 
+                    mode = '0644'
+                    owner = 'root' 
+
+            Service 
+                state = started 
+                enabled 
+
+            Web Page [File] 
+                state = created 
+                source 
+                ownership/permissions 
+
+                * these are properties * 
+                
+    -> all these together is what you call a Resource 
+    
+    to write these, you have to write them to a file called a manifest (init.pp) 
+        manifest, a collection of resources written for a certain object 
+            with puppets dsl 
+
+
+
+    Load Balancers 
+
+    Databases

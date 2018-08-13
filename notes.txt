@@ -68,7 +68,9 @@ Layers
         manifest, a collection of resources written for a certain object 
             with puppets dsl 
 
+ Nodes is where you apply your modules (apps) 
 
+    DSL -> Resources, Manifests, Modules 
 
     Load Balancers 
 

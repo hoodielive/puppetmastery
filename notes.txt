@@ -108,3 +108,31 @@ type:
 	}
 
 	To know what resource types are  available - go to the puppet reference or get core types cheat sheet 
+
+
+#### MANIFESTS ####
+- manifests are files which contain collection of resources 
+- written to achieve a specific objective 
+- have .pp extention (puppet dsl) 
+- resources in a manifest can be applied in any order
+
+base.pp
+	Lets create a recipe base.pp with following resource specifications
+
+	Create user
+		- deploy 
+
+	Install Packages 
+		- tree
+		- git
+		- ntp
+		- wget
+		- unzip
+
+	Start service 
+		- ntp 
+	
+	Remove user 
+		- dojo
+
+	Add file /etc/motd with content "Property of XYZ"

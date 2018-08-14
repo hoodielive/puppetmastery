@@ -136,3 +136,26 @@ base.pp
 		- dojo
 
 	Add file /etc/motd with content "Property of XYZ"
+
+#### MODULES ####
+
+- modules are packages with manifests and supporting files 
+
+- have 1:1 mapping with applications 
+
+- let you create a library of reusable code 
+
+- check out puppet forge: http://forge.puppet.com 
+
+Anatomy of a Module: 
+Manifests: 
+    - files 
+    - templates
+    - data
+    - spec
+    - examples
+    - metadata.json 
+    - README.md
+
+
+study - puppetlabs/puppet-ntp for a good example of modules 

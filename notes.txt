@@ -77,3 +77,15 @@ Layers
 
     Databases
 #
+
+######## Resources ########
+- puppet looks at your infrastructure as a collection of entities: 
+	packages
+	cronjob
+	file
+	network interfaces
+	service 
+	directory
+	user
+	- > these entities are described as 'resources'
+	- > resources are statements of configuration policy which are written using PUPPET'S DSL (Domain Specific Language) 

@@ -89,3 +89,22 @@ Layers
 	user
 	- > these entities are described as 'resources'
 	- > resources are statements of configuration policy which are written using PUPPET'S DSL (Domain Specific Language) 
+
+- puppet then translates these 'resources' into 'providers' which are platform specific procedures 
+	(yum, apt, zypper) 
+
+	So for example: If you want to install nginx - that would get translated to commands specific to that platform:
+		apt for ubuntu 
+		yum to redhat/centos
+		zypper to opensuse
+
+type:
+	user { 'devops': 
+		uid  	=> '5001',
+		gid     => '5001',
+		home    => '/home/devops',
+		shell	=> '/bin/bash',
+		ensure  => present,
+	}
+
+	To know what resource types are  available - go to the puppet reference or get core types cheat sheet 

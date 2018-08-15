@@ -198,9 +198,22 @@ Params
   design pattern mixed with existing classes 
   can get complex with increasing properties and platform specific logic
 
+  Params the story of sane defaults 
+    puppet vs chef 
+    chef started with puppet [ created a dedicated directory called attributes where you could define all the attributes of each app ] 
+
+
 Hiera
   hiera (new way, with puppet 4) 
   dedicated place to store data
   well thought after solution
     can scale
     simplified data management
+
+## ERB ## 
+Use erb for dynamic content (content that will be changing) 
+
+erb tags 
+  <%= expression 
+  <% conditions 
+  -%> truncate blank lines  

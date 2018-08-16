@@ -224,6 +224,7 @@ erb tags
 3. Update file resource to use template function 
 
 
+### Parameterized Classes ### 
 Scopes -> 
   child class
   parent class
@@ -233,3 +234,22 @@ Scopes ->
   child/parent class 
 
   params -> init -> config -> service -> install 
+
+  params houses (defaults) (variables) 
+  init can override params :: but this would not accomodate for hosts that require different configurations, which is why puppetlabs
+    created paramaterized classes () to determine scope. 
+
+    for example:
+
+      class tomcat (
+        $xms = '63m'
+        $xmx = '129m'
+        $user = 'root'
+        $group = 'tomcat'
+      ) inherits tomcat::params {
+        include java::install 
+        include tomcat::install
+        include tomcat::config
+        include tomcat::service 
+
+      } 

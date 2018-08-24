@@ -136,3 +136,120 @@ base.pp
 		- dojo
 
 	Add file /etc/motd with content "Property of XYZ"
+
+#### MODULES ####
+
+- modules are packages with manifests and supporting files 
+
+- have 1:1 mapping with applications 
+
+- let you create a library of reusable code 
+
+- check out puppet forge: http://forge.puppet.com 
+
+Anatomy of a Module: 
+Manifests: 
+    - files 
+    - templates
+    - data
+    - spec
+    - examples
+    - metadata.json 
+    - README.md
+
+
+study - puppetlabs/puppet-ntp for a good example of modules 
+
+# Parameters 
+- code vs data 
+- managing properties 
+
+Puppet allows you to separate code from data (properties) 
+- puppet supports providers 
+- one module (create generic modules which can be shared [puppet forge] that can be reused (saves time)) 
+
+code ->
+  manifests 
+    templates 
+
+data -> 
+  params -> 
+    user defined
+      -> hiera / child class 
+    sys defined 
+      -> facter 
+
+User defined 
+  params 
+    user defined 
+        hiera 
+        params.pp (class)(child/sub class) 
+
+Story of defaults 
+  modules define the default properties 
+  defaults are overridden from outside the modules 
+  overriding of properties happens either from node defs or external data sources 
+  this makes modules generic and sharable 
+
+Defaults inside modules 
+
+Params 
+  params.pp (old way) 
+  design pattern mixed with existing classes 
+  can get complex with increasing properties and platform specific logic
+
+  Params the story of sane defaults 
+    puppet vs chef 
+    chef started with puppet [ created a dedicated directory called attributes where you could define all the attributes of each app ] 
+
+
+Hiera
+  hiera (new way, with puppet 4) 
+  dedicated place to store data
+  well thought after solution
+    can scale
+    simplified data management
+
+## ERB ## 
+Use erb for dynamic content (content that will be changing) 
+
+erb tags 
+  <%= expression 
+  <% conditions 
+  -%> truncate blank lines  
+
+## Steps for templating a file ## 
+1. Create a Template 
+2. Define parameters 
+3. Update file resource to use template function 
+
+
+### Parameterized Classes ### 
+Scopes -> 
+  child class
+  parent class
+  node scope
+  top scope
+
+  child/parent class 
+
+  params -> init -> config -> service -> install 
+
+  params houses (defaults) (variables) 
+  init can override params :: but this would not accomodate for hosts that require different configurations, which is why puppetlabs
+    created paramaterized classes () to determine scope. 
+
+    for example:
+
+      class tomcat (
+        $xms = '63m'
+        $xmx = '129m'
+        $user = 'root'
+        $group = 'tomcat'
+      ) inherits tomcat::params {
+        include java::install 
+        include tomcat::install
+        include tomcat::config
+        include tomcat::service 
+
+      } 

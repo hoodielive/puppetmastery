@@ -15,7 +15,7 @@ class amanda (
    Optional[String] $amandataped_path,
    Array[String] $amanda_directories,
 ) {
-    if $facts[''] {
+    if $facts['RedHat'] {
         
     } else {
 

@@ -1,6 +1,6 @@
 class amanda::server (
   Struct[{
-  Optional[String] => Optional[Variant[String, Integer]],
+  Optional[config_dir] => Optional[Variant[String, Integer]],
   }] amanda_config = {},
 )
 

@@ -8,7 +8,8 @@
 
 class amanda::server (
   Struct[{
-    Optional[String] $config_dir,
+    Stdlib::Absolutepath $config,
+    Optional[Stdlib::Absolutepath] $config_dir,
     Optional[String] $backup_dir,
     Optional[Integer[0, 65535] $uid,
     Optional[Integer[0, 65535] $user,
@@ -44,4 +45,4 @@ class amanda::server (
 # mode:Puppet
 # fill-column:79
 # End:
-#
+$#

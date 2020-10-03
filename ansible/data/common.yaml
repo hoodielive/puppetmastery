@@ -1,0 +1,5 @@
+---
+ansible::settings:
+  ansible::inventory: '/var/tmp/ansible_inventory.ini'
+  ansible::roles_path: '/var/tmp/roles'
+  ansible::interpreter_python: 'auto'

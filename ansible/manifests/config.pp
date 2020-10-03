@@ -2,10 +2,10 @@
 #
 # A description of what this class does
 #
-# @summary - Certain files need to be configured in order 
-# for the ansible service to be run efficiently. Namely, 
+# @summary - Certain files need to be configured in order
+# for the ansible service to be run efficiently. Namely,
 # we would want to configure our own ansible_paths and such.
-# 
+#
 #   include ansible::config
 class ansible::config (
     Hash $settings = {},

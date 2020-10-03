@@ -9,5 +9,5 @@
 class ansible {
   contain ansible::install
   contain ansible::config
-} 
+}
 
